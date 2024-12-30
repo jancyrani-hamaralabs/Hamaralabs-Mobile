@@ -105,8 +105,8 @@ const TinkeringActivityReportBoxComponent = ({ activity }: { activity: Tinkering
         >  
                         {/* <Text style={tw`text-3xl font-bold textDecorationLine: 'underline' text-blue-900 mb-4`}>Tinkering Activity</Text> */}
                         <View>
-      <Text style={{ fontSize: 12, color: 'darkblue', textDecorationLine: 'underline', fontWeight: 'bold' }}>
-        Tinkering Activity:
+      <Text style={{ fontSize: 12, color: 'darkblue', fontWeight: 'bold' }}>
+        Tinkering Activity
       </Text>
     </View>
     {/* <View>
@@ -116,8 +116,9 @@ const TinkeringActivityReportBoxComponent = ({ activity }: { activity: Tinkering
     </View> */}
             
         {/* <Text style={tw`text-3xl font-bold text-blue-900 mb-2`}>{activity.taName}</Text> */}
+        <Text style={tw`text-lg font-bold text-blue-700 mb-2`}>{activity.taName}</Text>
 
-              <Text style={tw`text-3xl font-bold text-blue-900 mb-2`}>{activity.taName}</Text>
+              {/* <Text style={tw`text-xl font-bold text-blue-700 mb-2`}>{activity.taName}</Text> */}
               <Text style={tw`text-lg mb-4 text-gray-700`}>
               <Text style={tw`font-bold`}>Introduction:</Text> {activity.intro}
 
