@@ -49,8 +49,15 @@ const CompetitionReportBoxComponent = ({ competition }: { competition: Competiti
                 onPress={toggleModal}
             >
                 <Text style={tw`text-lg font-bold text-blue-900`}>{competition.name}</Text>
-                <HyperText style={tw`text-sm text-gray-700`} content={competition.description}></HyperText>
-                <Text style={tw`text-sm text-gray-700`}>Status: {competition.status !== undefined ? competition.status[competition.status.length - 1].status + " - " + competition.status[competition.status.length - 1].modifiedAt : ""}</Text>
+                <HyperText 
+  style={[tw`text-sm text-gray-700`, { textAlign: 'justify' }]} 
+  content={`Description: ${competition.description}`}
+/>
+                {/* <Text style={tw`text-sm text-gray-700`}>Status: {competition.status !== undefined ? competition.status[competition.status.length - 1].status + " - " + competition.status[competition.status.length - 1].modifiedAt : ""}</Text> */}
+                <Text style={tw`text-sm text-gray-700`}>Application End Date: {competition.applicationEndDate}</Text>
+                <Text style={tw`text-sm text-gray-700`}>Competition End Date: {competition.competitionEndDate}</Text>
+
+
             </Pressable>
 
             <Modal
@@ -84,23 +91,75 @@ const CompetitionReportBoxComponent = ({ competition }: { competition: Competiti
           scrollEventThrottle={16}
         >
                         <Text style={tw`text-3xl font-bold text-blue-900 mb-2`}>{competition.name}</Text>
-                            <HyperText style={tw`text-lg my-4 text-gray-700`} content={`Description: ${competition.description}`}></HyperText>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Organized By: {competition.organizedBy}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Application Start Date: {competition.applicationStartDate}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Application End Date: {competition.applicationEndDate}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Competition Start Date: {competition.competitionStartDate}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Competition End Date: {competition.competitionEndDate}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Eligibility:</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- ATL Schools: {eligibility && eligibility.atlSchools ? 'Yes' : 'No'}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- Classes From: {eligibility && eligibility.classesFrom}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- Individual: {eligibility && eligibility.individual ? 'Yes' : 'No'}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- Non-ATL Schools: {eligibility && eligibility.nonAtlSchools ? 'Yes' : 'No'}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- Team: {eligibility && eligibility.team ? 'Yes' : 'No'}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>Payment Details:</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- Fee: {paymentDetails && paymentDetails.fee}</Text>
-                            <Text style={tw`text-lg my-4 text-gray-700`}>- Type: {paymentDetails && paymentDetails.type}</Text>
-                            <HyperText style={tw`text-lg my-4 text-gray-700`} content={`Reference Links: ${competition.refLink && competition.refLink.join(", ")}`}></HyperText>
-                            <HyperText style={tw`text-lg my-4 text-gray-700`} content={`Requirements: ${competition.requirements && competition.requirements.join(", ")}`}></HyperText>
+                        <Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}>Description:</Text>
+  <Text> {competition.description}</Text>
+</Text>
+
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style= {{ fontWeight: 'bold' }}>Organized By: </Text>{competition.organizedBy}
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700` ]}>
+  <Text style={{ fontWeight: 'bold' }}>Application Start Date:</Text> {competition.applicationStartDate}
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700`]}>
+  <Text style={{ fontWeight: 'bold' }}>Application End Date:</Text> {competition.applicationEndDate}
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`]}>
+  <Text style={{ fontWeight: 'bold' }}>Competition Start Date:</Text> {competition.competitionStartDate}
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}>Competition End Date:</Text> {competition.competitionEndDate}
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}>Eligibility:</Text>
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -ATL Schools:</Text> {eligibility && eligibility.atlSchools ? 'Yes' : 'No'}
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -Classes From:</Text> {eligibility && eligibility.classesFrom}
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -Individual:</Text> {eligibility && eligibility.individual ? 'Yes' : 'No'}
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -Non-ATL Schools:</Text> {eligibility && eligibility.nonAtlSchools ? 'Yes' : 'No'}
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -Team:</Text> {eligibility && eligibility.team ? 'Yes' : 'No'}
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> Payment Details:</Text>
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -Fee:</Text> {paymentDetails && paymentDetails.fee}
+</Text>
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}> -Type:</Text> {paymentDetails && paymentDetails.type}
+</Text>
+
+<Text style={[tw`text-lg my-4 text-gray-700`, { textAlign: 'justify' }]}>
+  <Text style={{ fontWeight: 'bold' }}>Reference Links:</Text>
+  {competition.refLink &&
+    competition.refLink.map((link, index) => (
+      <Text key={index}>{`\n${index + 1}. ${link}`}</Text>
+    ))}
+  {"\n\n"}
+  <Text style={{ fontWeight: 'bold' }}>Requirements:</Text>
+  {competition.requirements &&
+    competition.requirements.map((req, index) => (
+      <Text key={index}>{`\n${index + 1}. ${req}`}</Text>
+    ))}
+</Text>
+                            {/* <HyperText style={tw`text-lg my-4 text-gray-700 text-justify`} content={`Requirements: ${competition.requirements && competition.requirements.join(", ")}`}></HyperText> */}
                             {/* <Text style={tw`text-lg my-4 text-gray-700`}>Status:</Text>
                             {status && status.map((statusItem, index) => (
                                 <Text key={index} style={tw`text-lg text-gray-700`}>
@@ -139,13 +198,13 @@ const CompetitionReportBoxComponent = ({ competition }: { competition: Competiti
             >
                 <Icon name="close" size={12} color="#FFFFFF" />
                 </Pressable>
-                  <Text style={tw`text-2xl font-bold text-blue-900 mb-4`}>Select Status</Text>
+                  {/* <Text style={tw`text-2xl font-bold text-blue-900 mb-4`}>Select Status</Text>
                         <Picker
                             selectedValue={selectedStatus}
                             onValueChange={(itemValue) => handleStatusChange(itemValue)}
                             data={statusOptions.map(status => ({ label: status, value: status }))}
                             style={tw`w-full`}
-                        />
+                        /> */}
           </View>
         </KeyboardAvoidingView>
             </Modal>
@@ -154,13 +213,6 @@ const CompetitionReportBoxComponent = ({ competition }: { competition: Competiti
 };
 
 export default CompetitionReportBoxComponent;
-
-
-
-
-
-
-
 
 
 
